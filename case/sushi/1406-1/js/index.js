@@ -358,6 +358,14 @@ jQuery(function($){
 
     $(document).on('click','.prev-button',function(){
         var left = $(".carousel-container").position().left
+        if (left > -3) { return }
+        var pic_num = $(".carousel-container li").length
+        var left_offset =  ( left + 230 ) + 'px'
+        $(".carousel-container").animate({left:left_offset},200)  
+    })
+
+    $(document).on('click','.next-button',function(){
+        var left = $(".carousel-container").position().left
         var pic_num = $(".carousel-container li").length
         if ( left < -1*(pic_num-4)*230){
             return 
@@ -365,14 +373,6 @@ jQuery(function($){
 
         var left_offset =  ( left - 230 ) + 'px'
         $(".carousel-container").animate({left:left_offset},200)
-    })
-
-    $(document).on('click','.next-button',function(){
-        var left = $(".carousel-container").position().left
-        if (left > -3) { return }
-        var pic_num = $(".carousel-container li").length
-        var left_offset =  ( left + 230 ) + 'px'
-        $(".carousel-container").animate({left:left_offset},200)  
     })
     $(document).on('click','.btn-shareSina', function(){
         var url = encodeURIComponent(location.href),
