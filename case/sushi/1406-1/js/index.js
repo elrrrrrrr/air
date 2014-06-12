@@ -1,7 +1,7 @@
 define(function(require,exports,module){	
 	var $ = jQuery = require('jquery');
 	var grid = require('grid')($);
-	require('prize-roller')($);
+	var recordList = require('prize-list')($);
 
 var Global = {
     LOGGED: false,
@@ -384,5 +384,5 @@ jQuery(function($){
     Login();
     popupLayerEnter();
 });
-
+    $('.award-list').prizeRoller()
 })

@@ -357,6 +357,7 @@ body {
 }
 .noprize1 .btn-group, .noprize2 .btn-group, .noprize3 .btn-group {
   padding: 20px 20px 0 20px;
+  padding-top:0px;
 }
 .overlay {
   width: 100%;
@@ -577,6 +578,12 @@ body {
   background: white;
   border: 1px solid #fae095;
   overflow: hidden;
+  position: relative;
+}
+
+.award-list> ul {
+  display: block;
+  position: absolute;
 }
 
 .block3 .width1000 {
