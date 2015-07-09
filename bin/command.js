@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 global.RELOAD = true;
+var run = true;
 var path = require('path');
 var program = require('commander');
 var fs = require('fs-extra');
@@ -10,7 +11,6 @@ var spawn = require('child_process').spawn;
 var os = require('os');
 var pkg = require('../package.json');
 var config = require('../utils/getConfig');
-
 
 var version = pkg.version;
 var htmlPath = config.htmlPath;
@@ -66,11 +66,14 @@ function setPort(p) {
 }
 
 function initConfig() {
-  fs.copy(path.join(__dirname, '../template/config.json'), cwd + '/config.json', function(err) {
+  fs.copy(path.join(__dirname, '../config.json'), cwd + '/config.json', function(err) {
     if (err) {
       return console.error(err);
+    } else {
+      console.log('qin: init config.json.');
     }
   });
+  run = false;
 }
 
 function still() {
@@ -106,7 +109,9 @@ var openURL = function(url) {
   }
   return;
 };
-
+if (!run) {
+  return;
+}
 var server = require('../lib/server');
 if (global.RELOAD) {
   require('../lib/socket');
